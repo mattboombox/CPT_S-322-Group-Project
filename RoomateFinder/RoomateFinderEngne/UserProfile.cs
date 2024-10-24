@@ -8,7 +8,10 @@ namespace RoomateFinderEngne
     public class UserProfile
     {
         private string username;
+        private string bio; 
         public string Username { get { return username; } set { username = value; } }
+
+        public string Bio {  get { return bio; } set { bio = value;  } }
         
     }
 }

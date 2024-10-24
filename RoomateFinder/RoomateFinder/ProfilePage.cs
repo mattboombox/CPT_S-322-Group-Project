@@ -10,6 +10,7 @@ namespace RoomateFinder
         public ProfilePage(RoomateFinderController controller)
         {
             this.controller = controller;
+
             InitializeComponent();
             LoadUserProfile();
         }
@@ -21,8 +22,10 @@ namespace RoomateFinder
 
             // Display user information in labels or textboxes
             name.Text = user.Username;
-           // lastNameLabel.Text = user.LastName;
+            bio.Text = user.Bio;
+            // lastNameLabel.Text = user.LastName;
             // Add other user details as needed
         }
+
     }
 }

@@ -36,10 +36,12 @@ namespace RoomateFinderEngne
         /// Adds a new user profile to the dictionary with the username as the key.
         /// </summary>
         /// <param name="username"></param>
-        public void CreateNewProfile(string username)
+        /// <param name="bio"></param>
+        public void CreateNewProfile(string username, string bio)
         {
             UserProfile profile = new UserProfile();
             profile.Username = username;
+            profile.Bio = bio;
             userProfiles.Add(username, profile);
         }
 
@@ -64,6 +66,7 @@ namespace RoomateFinderEngne
                 var line = reader.ReadLine();
                 var values = line.Split(',');
                 profile.Username = values[0];
+                profile.Bio = values[1];
                 userProfiles.Add(profile.Username, profile);
             }
         }
