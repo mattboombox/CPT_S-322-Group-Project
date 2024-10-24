@@ -26,7 +26,7 @@ namespace RoomateFinderEngne
 
         public void increaseSurveyNum()
         {
-            this.verifySurveyNum++;
+            this.completedSurveyNum++;
         }
 
         //WIP

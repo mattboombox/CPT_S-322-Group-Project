@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.Design;
+using System.Diagnostics;
+
 /*
     TODO: Beck: 
         fully implement new profile creation.
@@ -27,6 +29,24 @@ namespace RoomateFinderEngne
         /// login process object.
         /// </summary>
         public Login newLogin;
+
+        public List<Match> matches = new List<Match>();
+
+
+        public void AddMatch(Match match)
+        {
+            matches.Add(match);
+
+        }
+        public List<Match> GetMatches()
+        {
+            return matches;
+        }
+
+        public UserProfile GetActiveUser()
+        {
+            return activeUser;
+        }
 
         public string test;
         public RoomateFinderController()
