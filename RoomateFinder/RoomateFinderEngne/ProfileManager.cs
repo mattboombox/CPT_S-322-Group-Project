@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Channels;
 
 
 namespace RoomateFinderEngne
@@ -6,7 +7,7 @@ namespace RoomateFinderEngne
     /// <summary>
     /// reads from a file and populates a dictionary with user profiles. These profiles can then be accessed, worked on, removed, added to etc.
     /// </summary>
-    internal class ProfileManager
+    public class ProfileManager
     {
         /// <summary>
         /// stores the users username as a key and its profile as its value.
@@ -14,6 +15,7 @@ namespace RoomateFinderEngne
         private Dictionary<string, UserProfile> userProfiles = new Dictionary<string, UserProfile>();
         private string path = "profiles.csv";
         StreamReader reader = null;
+        StreamWriter writer = null;
 
         /// <summary>
         /// Constructor for the profile manager
@@ -58,17 +60,56 @@ namespace RoomateFinderEngne
         /// <summary>
         /// reads the csv file and loads all the data into the user profile. ATTENTION: This code will have to be changed when new properties are added to the user profile!
         /// </summary>
-        private void LoadProfileDictionary()
+        public void LoadProfileDictionary()
         {
-            while (!reader.EndOfStream)
+            if (File.Exists(path))
             {
-                UserProfile profile = new UserProfile();
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                profile.Username = values[0];
-                profile.Bio = values[1];
-                userProfiles.Add(profile.Username, profile);
+                using (StreamReader reader = new StreamReader(File.OpenRead(path)))
+                {
+                    while (!reader.EndOfStream)
+                    {
+                        UserProfile profile = new UserProfile();
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        profile.Username = values[0];
+                        profile.Bio = values[1];
+                        userProfiles.Add(profile.Username, profile);
+                    }
+                }
+                reader?.Close();
+            }
+            else
+            {
+                throw new FileNotFoundException("profiles.csv not found.");
             }
         }
+
+
+        // function to save new bio to user profile
+        public void UpdateUserProfile(string username, string bio)
+        {
+            if (userProfiles.ContainsKey(username))
+            {
+                userProfiles[username].Bio = bio;
+                SaveProfilesToCsv();
+            }
+        }
+
+        // function to save updated profile to csv spreadsheet
+        private void SaveProfilesToCsv()
+        {
+
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                foreach (var profile in userProfiles.Values)
+                {
+                    writer.WriteLine($"{profile.Username},{profile.Bio}");
+                }
+                writer?.Close();
+            }
+            
+        }
+
+
     }
 }

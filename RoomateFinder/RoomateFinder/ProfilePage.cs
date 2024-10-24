@@ -48,6 +48,9 @@ namespace RoomateFinder
                 var user = controller.GetActiveUser();
                 user.Bio = bioEditor.Text; // Update the bio in the user profile
 
+                ProfileManager profileManager = new ProfileManager();
+                profileManager.UpdateUserProfile(user.Username, user.Bio);
+
                 e.Handled = true;
                 e.SuppressKeyPress = true;
 
