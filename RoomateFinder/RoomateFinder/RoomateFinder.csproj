@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="RoomateFinderEngne">
-      <HintPath>..\RoomateFinderEngne\bin\Debug\net6.0\RoomateFinderEngne.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\RoomateFinderEngne\RoomateFinderEngne.csproj" />
   </ItemGroup>
 
   <ItemGroup>

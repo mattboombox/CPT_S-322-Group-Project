@@ -36,9 +36,13 @@ namespace RoomateFinder
             if (this.controller.newLogin.ValidateUserInfo())
             {
                 this.label3.Text = "Logging in...";
+
                 this.controller.SetActiveUser(this.controller.newLogin.Username);
                 this.Hide(); // Hides the login form
-                new HomePage(this.controller).ShowDialog(); // shows the homepage form.
+                MatchManager matchManager = new MatchManager(this.controller);
+                matchManager.findMatches();
+                HomePage homepage = new HomePage(this.controller); // shows the homepage form.
+                homepage.ShowDialog();
                 this.Close();
             }
             else

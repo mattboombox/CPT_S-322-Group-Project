@@ -1,4 +1,4 @@
-namespace RoomateFinder
+﻿namespace RoomateFinder
 {
     internal static class Program
     {
@@ -12,6 +12,7 @@ namespace RoomateFinder
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
+            
         }
     }
 }
