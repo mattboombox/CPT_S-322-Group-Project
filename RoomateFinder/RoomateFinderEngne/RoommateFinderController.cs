@@ -65,5 +65,11 @@ namespace RoomateFinderEngne
             test = activeUser.Username; // just used to test that the active user was set correctly, Remove before final product.
         }
 
+        public void clearMatches()
+        {
+            matches.Clear();
+            Console.WriteLine("Matches have been cleared");
+        }
+
     }
 }
