@@ -60,6 +60,29 @@ namespace RoomateFinderEngne
 
         }
 
+
+        public void GenerateMatches(RoomateFinderController controller)
+        {
+            // List of temporary users
+            List<string> users = new List<string> { "user1", "user2", "user3", "user4" };
+
+            foreach (var user1 in users)
+            {
+                foreach (var user2 in users)
+                {
+                    if (user1 != user2)
+                    {
+                        // Create a new Match object
+                        Match match = new Match(user1, user2);
+
+                        // Add the match to the controller
+                        controller.AddMatch(match);
+                    }
+                }
+            }
+        }
+
+
         public void SaveMatches()
         {
             using (StreamWriter writer = new StreamWriter("matches.csv"))
