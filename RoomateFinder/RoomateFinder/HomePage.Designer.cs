@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-    // Suspend layout for performance
+            // Suspend layout for performance
             SuspendLayout();
 
             // Profile Button
@@ -42,7 +42,7 @@
             profileButton.ForeColor = Color.White;
             this.Controls.Add(profileButton);
 
-                // Logout Button
+            // Logout Button
             Button logoutButton = new Button();
             logoutButton.Text = "Logout";
             logoutButton.Location = new Point(700, 30);  // Adjust the position as necessary
@@ -57,16 +57,17 @@
             Label matchesLabel = new Label();
             matchesLabel.Text = "Available Matches:";
             matchesLabel.Font = new Font("Arial", 14, FontStyle.Bold);
-            matchesLabel.Location = new Point(50, 100);  // Position the label
+            matchesLabel.Location = new Point(50, 100); 
             matchesLabel.AutoSize = true;
             matchesLabel.FlatStyle = FlatStyle.Flat;
             matchesLabel.BackColor = Color.Gray;
             matchesLabel.ForeColor = Color.White;
             this.Controls.Add(matchesLabel);
 
-            // Preferences Button (for example)
+
+            // Settings Button 
             Button settingsButton = new Button();
-            settingsButton.Text = "Preferences";
+            settingsButton.Text = "Settings";
             settingsButton.Location = new Point(700, 60);  // Adjust the position as necessary
             settingsButton.Size = new Size(100, 30);
             settingsButton.Click += SettingsButton_Click;  // Event handler for preferences button click
@@ -75,7 +76,6 @@
             settingsButton.ForeColor = Color.White;
 
             this.Controls.Add(settingsButton);
-
     
             // Home Page Form Properties
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -88,29 +88,32 @@
 
             ResumeLayout(false);
     }
-
         private void ProfileButton_Click(object sender, EventArgs e)
         {
             ProfilePage profilePage = new ProfilePage(controller);
-            profilePage.ShowDialog(); 
+            profilePage.Show(); 
         }
 
         // Event handler for the Logout button click
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-        // Close the home page and return to the login page
-        this.Close();
-        LoginForm loginForm = new LoginForm();
-        loginForm.Show();
+            // Close the home page and return to the login page
+            this.Close();
+            LoginForm loginForm = new LoginForm();
+            loginForm.Show();
         }
 
-// Event handler for the Preferences button click
+        // Event handler for the Preferences button click
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Settings will be implemented here.", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-     
-        }
 
-        #endregion
+
+
+        
+     
     }
+
+    #endregion
+}
