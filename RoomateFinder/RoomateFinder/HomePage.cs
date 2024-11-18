@@ -10,6 +10,8 @@
     public partial class HomePage : Form
     {
         private RoomateFinderController controller;
+        private List<Match> matchesList;
+        ListBox matchesListBox = new ListBox();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HomePage"/> class.
@@ -19,6 +21,7 @@
         {
             this.controller = controller;
             InitializeComponent();
+            LoadMatches();
             this.Text = "RoomMate Finder Homepage"; // Updated title
         }
 
@@ -27,18 +30,16 @@
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            // This code will execute when the HomePage loads
-            LoadMatches();
+        
         }
 
         private void LoadMatches()
         {
             List<Match> matches = controller.GetMatches();  // Get the list of matches
 
-            ListBox matchesListBox = new ListBox();  // Create a ListBox to display the matches
-
             matchesListBox.Location = new Point(100, 270);
             matchesListBox.Size = new Size(500, 400);
+            matchesListBox.Click += MatchesListBox_Click;
 
            // Populate the ListBox with match names
             foreach (var match in matches)
@@ -48,15 +49,24 @@
 
             // Add the ListBox to the form
             this.Controls.Add(matchesListBox);
+            matchesListBox.Tag = matches;
         }
 
-        /// <summary>
-        /// Event handler for when the "View Details" button is clicked.
-        /// </summary>
-        private void DetailsButton_Click(object sender, EventArgs e)
+        private void MatchesListBox_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Roommate details coming soon!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+            ListBox listBox = sender as ListBox;
 
+            var index = listBox.SelectedIndex;
+            if(index == 1) return;
+
+            List<Match> matches = listBox.Tag as List<Match>;
+            if(matches == null) return;
+
+            Match selectedMatch = matches[index];
+
+            MessageBox.Show($"You selected {selectedMatch.FirstName} {selectedMatch.LastName}");
+            
+        }
     }
 }
+ 

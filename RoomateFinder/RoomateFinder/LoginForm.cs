@@ -84,6 +84,8 @@ namespace RoomateFinder
         /// <param name="e">e.</param>
         private void button2_Click(object sender, EventArgs e)
         {
+            this.controller.newLogin.CreateNewUser();
+            
 
         }
     }
