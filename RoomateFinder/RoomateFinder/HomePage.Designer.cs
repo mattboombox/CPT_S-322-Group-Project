@@ -4,10 +4,8 @@
     {
     
         private System.ComponentModel.IContainer components = null;
-
         private Button profileButton;
         private Button logoutButton;
-        private Button settingsButton;
         private Label matchesLabel;
         private TableLayoutPanel mainLayout;
         private Panel navBar;
@@ -114,13 +112,6 @@
             profileButton.Click += ProfileButton_Click;
             StyleNavButton(profileButton);
 
-            // Settings Button
-            settingsButton = new Button();
-            settingsButton.Text = "Settings";
-            settingsButton.Size = new Size(140, 60); // Adjusted size
-            settingsButton.Click += SettingsButton_Click;
-            StyleNavButton(settingsButton);
-
             // Logout Button
             logoutButton = new Button();
             logoutButton.Text = "Logout";
@@ -138,7 +129,6 @@
             navButtonsPanel.Margin = new Padding(0);
 
             navButtonsPanel.Controls.Add(profileButton);
-            navButtonsPanel.Controls.Add(settingsButton);
             navButtonsPanel.Controls.Add(logoutButton);
         }
 
@@ -167,13 +157,7 @@
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
         }
-
-        private void SettingsButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Settings will be implemented here.", "Settings", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
  
     }
     #endregion
 }
-

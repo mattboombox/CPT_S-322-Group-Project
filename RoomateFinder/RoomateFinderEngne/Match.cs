@@ -3,11 +3,15 @@ namespace RoomateFinderEngne
     /// <summary>
     /// Contains all the information on a specific user, with the exception of passwords.
     /// </summary>
+    
     public class Match
     {
         // Private backing fields
         private string _firstName;
         private string _lastName;
+
+        public string Username { get; set; }    // Username of the match
+
 
         // Public properties with proper naming and backing fields
         public string FirstName 
@@ -22,11 +26,16 @@ namespace RoomateFinderEngne
             set { _lastName = value; UpdateName(); } 
         }
 
-           public Match(string FirstName, string LastName)
+           public Match(string username, string FirstName, string LastName)
         {
+            Username = username;
             _firstName = FirstName;
             _lastName = LastName;
             UpdateName();
+        }
+        public override string ToString()
+        {
+            return $"{Username} ({FirstName} {LastName})";
         }
 
 

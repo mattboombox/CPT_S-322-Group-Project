@@ -24,15 +24,16 @@ namespace RoomateFinderEngne
         /// <summary>
         /// Reads match data from the CSV file and adds matches to the controller.
         /// </summary>
-        public void findMatches()
+        public void FindMatches()
         {
-            if (!File.Exists("matches.csv"))
+            string filePath = "matches.csv";
+
+            if (!File.Exists(filePath))
             {
                 return;
             }
 
-            // StreamReader reader = new StreamReader(@"C:\Users\katiebrickner\Desktop\CPT_S-322-Group-Project\RoomateFinder\RoomateFinderEngne\matches.csv");
-            string filePath = "matches.csv";
+            Console.WriteLine("Reading matches from " + filePath);
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -42,46 +43,35 @@ namespace RoomateFinderEngne
                 {
                     var line = reader.ReadLine();
                     lineNumber++;
+                    Console.WriteLine($"Line {lineNumber}: {line}");
+
                     var values = line.Split(',');
 
-                    if (values.Length >= 2)
+                    if (values.Length >= 3)
                     {
-                        string firstName = values[0].Trim();
-                        string lastName = values[1].Trim();
+                        string username = values[0].Trim();
+                        string firstName = values[1].Trim();
+                        string lastName = values[2].Trim();
 
-                        // Create a new Match object
-                        Match match = new Match(firstName, lastName);
+                        // Validate the values
+                        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                        {
+                            continue;
+                        }
+
+                        // Create a new Match object with a unique username
+                        Match match = new Match(username, firstName, lastName);
 
                         // Add the match to the controller
                         controller.AddMatch(match);
                     }
-                }
-            }
-
-        }
-
-
-        public void GenerateMatches(RoomateFinderController controller)
-        {
-            // List of temporary users
-            List<string> users = new List<string> { "user1", "user2", "user3", "user4" };
-
-            foreach (var user1 in users)
-            {
-                foreach (var user2 in users)
-                {
-                    if (user1 != user2)
-                    {
-                        // Create a new Match object
-                        Match match = new Match(user1, user2);
-
-                        // Add the match to the controller
-                        controller.AddMatch(match);
+                    else
+                    {   
+                        Console.WriteLine($"Invalid data at line {lineNumber}: {line} (Expected 3 values, found {values.Length})");
                     }
                 }
             }
         }
-
 
         public void SaveMatches()
         {

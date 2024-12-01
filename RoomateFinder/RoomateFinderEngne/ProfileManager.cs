@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Threading.Channels;
 
 
@@ -7,13 +8,16 @@ namespace RoomateFinderEngne
     /// <summary>
     /// reads from a file and populates a dictionary with user profiles. These profiles can then be accessed, worked on, removed, added to etc.
     /// </summary>
-    public class ProfileManager
+    public class ProfileManager 
     {
         /// <summary>
         /// stores the users username as a key and its profile as its value.
         /// </summary>
         private Dictionary<string, UserProfile> userProfiles = new Dictionary<string, UserProfile>();
         private string path = "profiles.csv";
+
+        private static List<RoomateFinder.User> users = new List<RoomateFinder.User>();
+
         StreamReader reader = null;
         StreamWriter writer = null;
 
@@ -110,6 +114,21 @@ namespace RoomateFinderEngne
             
         }
 
-
+        public static RoomateFinder.User GetUserByUsername(string username)
+        {
+            return users.FirstOrDefault(u => u.Username == username);
+        }
+        public void UpdateUserProfile(string username, string bio, string profilePhotoUrl = null)
+        {
+            var user = GetUserByUsername(username);
+            if (user != null)
+            {
+                user.Bio = bio;
+                if (!string.IsNullOrEmpty(profilePhotoUrl))
+                {
+                    user.ProfilePhotoUrl = profilePhotoUrl;
+                }
+            }
+        }
     }
 }
