@@ -39,72 +39,82 @@
             // 
             // usernameTextBox
             // 
-            usernameTextBox.Location = new Point(222, 188);
+            usernameTextBox.Location = new Point(370, 260); 
             usernameTextBox.Name = "usernameTextBox";
-            usernameTextBox.Size = new Size(100, 23);
+            usernameTextBox.Size = new Size(300, 30);
+            usernameTextBox.Font = new Font("Segoe UI", 12);
             usernameTextBox.TabIndex = 0;
             usernameTextBox.TextChanged += usernameTextBox_TextChanged;
+            usernameTextBox.PlaceholderText = "Enter your username";
+            usernameTextBox.BorderStyle = BorderStyle.FixedSingle;
             // 
             // passwordTextBox
             // 
-            passwordTextBox.Location = new Point(412, 188);
+            passwordTextBox.Location = new Point(370, 350);
             passwordTextBox.Name = "passwordTextBox";
-            passwordTextBox.Size = new Size(100, 23);
+            passwordTextBox.Size = new Size(300, 30);
+            passwordTextBox.Font = new Font("Segoe UI", 12);
             passwordTextBox.TabIndex = 1;
             passwordTextBox.TextChanged += passwordTextBox_TextChanged;
+            passwordTextBox.UseSystemPasswordChar = true;
+            passwordTextBox.PlaceholderText = "Enter your password";
+            passwordTextBox.BorderStyle = BorderStyle.FixedSingle;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(222, 170);
+            label1.Location = new Point(370, 210);
             label1.Name = "label1";
-            label1.Size = new Size(60, 15);
+            label1.Size = new Size(75, 15);
+            label1.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            label1.ForeColor = Color.DarkSlateGray;
             label1.TabIndex = 2;
-            label1.Text = "Username";
+            label1.Text = "Username:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(412, 170);
+            label2.Location = new Point(370, 310);
             label2.Name = "label2";
-            label2.Size = new Size(57, 15);
+            label2.Size = new Size(72, 15);
+            label2.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            label2.ForeColor = Color.DarkSlateGray;
             label2.TabIndex = 3;
-            label2.Text = "Password";
+            label2.Text = "Password:";
             // 
             // button1
             // 
-            button1.Location = new Point(328, 262);
+            button1.Location = new Point(370, 420);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(300, 60);
             button1.TabIndex = 4;
             button1.Text = "Login";
+            button1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
             button1.UseVisualStyleBackColor = true;
+            button1.BackColor = Color.SteelBlue;
+            button1.ForeColor = Color.White;
+            button1.FlatStyle = FlatStyle.Flat;
             button1.Click += button1_Click;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(409, 266);
-            label3.Name = "label3";
-            label3.Size = new Size(38, 15);
-            label3.TabIndex = 5;
-            label3.Text = "label3";
             // 
             // button2
             // 
-            button2.Location = new Point(12, 12);
+            button2.Location = new Point(20, 20);
             button2.Name = "button2";
-            button2.Size = new Size(113, 23);
+            button2.Size = new Size(200, 50);
             button2.TabIndex = 6;
             button2.Text = "Create Profile";
+            button2.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             button2.UseVisualStyleBackColor = true;
+            button2.BackColor = Color.White;
+            button2.ForeColor = Color.SteelBlue;
+            button2.FlatStyle = FlatStyle.Flat;
             button2.Click += button2_Click;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 800);
             Controls.Add(button2);
             Controls.Add(label3);
             Controls.Add(button1);
@@ -114,7 +124,9 @@
             Controls.Add(usernameTextBox);
             Name = "LoginForm";
             Text = "Login";
-            Load += LoginForm_Load;
+            Font = new Font("Segoe UI", 10);
+            StartPosition = FormStartPosition.CenterScreen;
+            BackColor = Color.WhiteSmoke;
             ResumeLayout(false);
             PerformLayout();
         }
