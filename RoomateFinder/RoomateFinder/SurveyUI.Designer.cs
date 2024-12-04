@@ -510,5 +510,7 @@
         private Label label20;
         private Button SubmitButton;
         private Label label21;
+        private TextBox[] answerTextBoxes;
+
     }
 }
