@@ -15,13 +15,16 @@ namespace RoommateFinderEngine
         public int[] matchIndicies;
 
         public string userAnswers;
+        public string filePath;
 
-        public Grader(string UserSurveyResults)
+        public Grader(string UserSurveyResults, string FilePath)
         {
             // Array for storing scores from roommates.csv
             scores = new int[100];
             // Array for storing the indices of the top three scores
             matchIndicies = new int[3];
+
+            this.filePath = FilePath;
 
             userAnswers = UserSurveyResults;
         }
@@ -103,7 +106,7 @@ namespace RoommateFinderEngine
             return answers;
         }
 
-        public void CalculateMatches(string filePath)
+        public void CalculateMatches()
         {
             // Load roommate answers from the CSV file
             List<string> roommateAnswers = LoadAnswersFromFile(filePath);
