@@ -48,6 +48,8 @@ namespace RoomateFinder
             else
             {
                 this.label3.Text = "Incorrect Username/Password";
+                this.label3.Location = new Point(345, 490);
+                this.label3.Size = new Size(500, 30);
             }
         }
 
