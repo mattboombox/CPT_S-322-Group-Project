@@ -244,7 +244,7 @@
             // 
             // textBox11
             // 
-            textBox11.Location = new Point(457, 924);
+            textBox11.Location = new Point(457, 111);
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(200, 27);
             textBox11.TabIndex = 40;
@@ -260,7 +260,7 @@
             // 
             // textBox12
             // 
-            textBox12.Location = new Point(457, 804);
+            textBox12.Location = new Point(457, 208);
             textBox12.Name = "textBox12";
             textBox12.Size = new Size(200, 27);
             textBox12.TabIndex = 38;
@@ -276,7 +276,7 @@
             // 
             // textBox13
             // 
-            textBox13.Location = new Point(457, 704);
+            textBox13.Location = new Point(457, 294);
             textBox13.Name = "textBox13";
             textBox13.Size = new Size(200, 27);
             textBox13.TabIndex = 36;
@@ -292,7 +292,7 @@
             // 
             // textBox14
             // 
-            textBox14.Location = new Point(457, 624);
+            textBox14.Location = new Point(457, 394);
             textBox14.Name = "textBox14";
             textBox14.Size = new Size(200, 27);
             textBox14.TabIndex = 34;
@@ -308,7 +308,7 @@
             // 
             // textBox15
             // 
-            textBox15.Location = new Point(457, 544);
+            textBox15.Location = new Point(457, 464);
             textBox15.Name = "textBox15";
             textBox15.Size = new Size(200, 27);
             textBox15.TabIndex = 32;
@@ -324,7 +324,7 @@
             // 
             // textBox16
             // 
-            textBox16.Location = new Point(457, 464);
+            textBox16.Location = new Point(457, 544);
             textBox16.Name = "textBox16";
             textBox16.Size = new Size(200, 27);
             textBox16.TabIndex = 30;
@@ -340,7 +340,7 @@
             // 
             // textBox17
             // 
-            textBox17.Location = new Point(457, 391);
+            textBox17.Location = new Point(457, 624);
             textBox17.Name = "textBox17";
             textBox17.Size = new Size(200, 27);
             textBox17.TabIndex = 28;
@@ -356,7 +356,7 @@
             // 
             // textBox18
             // 
-            textBox18.Location = new Point(457, 294);
+            textBox18.Location = new Point(457, 704);
             textBox18.Name = "textBox18";
             textBox18.Size = new Size(200, 27);
             textBox18.TabIndex = 26;
@@ -372,7 +372,7 @@
             // 
             // textBox19
             // 
-            textBox19.Location = new Point(457, 208);
+            textBox19.Location = new Point(457, 804);
             textBox19.Name = "textBox19";
             textBox19.Size = new Size(200, 27);
             textBox19.TabIndex = 24;
@@ -388,7 +388,7 @@
             // 
             // textBox20
             // 
-            textBox20.Location = new Point(457, 111);
+            textBox20.Location = new Point(457, 924);
             textBox20.Name = "textBox20";
             textBox20.Size = new Size(200, 27);
             textBox20.TabIndex = 22;
