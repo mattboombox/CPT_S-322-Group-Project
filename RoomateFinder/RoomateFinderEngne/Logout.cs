@@ -28,7 +28,6 @@ namespace RoomateFinderEngne
             }
 
             SaveUserData(user);
-            GenerateAndSaveMatches();
         }
 
         private void SaveUserData(UserProfile user)
@@ -76,39 +75,6 @@ namespace RoomateFinderEngne
                 Console.WriteLine($"Error saving or updating user info: {ex.Message}");
             }
         }
-
-
-        private void GenerateAndSaveMatches()
-        {
-            // List of temporary users
-            List<string> users = new List<string> { "user1", "user2", "user3", "user4" };
-
-            // Generate matches
-            matches.Clear();
-            
-            foreach (var user1 in users)
-            {
-                foreach (var user2 in users)
-                {
-                    if (user1 != user2)
-                    {
-                        matches.Add(new Match(user1, user2));
-                    }
-                }
-            }
-
-            // Save matches to matches.csv
-            using (StreamWriter writer = new StreamWriter("matches.csv"))
-            {
-                foreach (var match in matches)
-                {
-                    writer.WriteLine(match);
-                }
-            }
-
-            Console.WriteLine("Matches generated and saved to matches.csv.");
-        }
-
 
 
     }

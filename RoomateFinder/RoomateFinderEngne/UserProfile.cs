@@ -12,6 +12,7 @@ namespace RoomateFinderEngne
         public string Username { get { return username; } set { username = value; } }
 
         public string Bio {  get { return bio; } set { bio = value;  } }
-        
+
+        public string? ProfilePhotoUrl { get; set; }
     }
 }
