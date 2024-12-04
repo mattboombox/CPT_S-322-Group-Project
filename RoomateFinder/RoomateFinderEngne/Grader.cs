@@ -24,7 +24,7 @@ namespace RoommateFinderEngine
             // Array for storing the indices of the top three scores
             matchIndicies = new int[3];
 
-            this.filePath = FilePath;
+            filePath = FilePath;
 
             userAnswers = UserSurveyResults;
         }
@@ -73,7 +73,7 @@ namespace RoommateFinderEngine
         }
 
         // Reads the roommate answers from the CSV file
-        public List<string> LoadAnswersFromFile(string filePath)
+        public List<string> LoadAnswersFromFile()
         {
             var answers = new List<string>();
 
@@ -109,7 +109,7 @@ namespace RoommateFinderEngine
         public void CalculateMatches()
         {
             // Load roommate answers from the CSV file
-            List<string> roommateAnswers = LoadAnswersFromFile(filePath);
+            List<string> roommateAnswers = LoadAnswersFromFile();
 
             // Fill the scores array using the loaded answers
             for (int i = 0; i < roommateAnswers.Count; i++)
