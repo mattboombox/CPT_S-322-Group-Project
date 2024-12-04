@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Microsoft.VisualBasic;
 
 namespace RoomateFinderEngne
 {
@@ -18,6 +18,19 @@ namespace RoomateFinderEngne
         /// </summary>
         public void CreateNewUser()
         {
+            string username = Microsoft.VisualBasic.Interaction.InputBox("Enter your username here", "Create New User", "Username");
+            string password = Microsoft.VisualBasic.Interaction.InputBox("Enter password here", "Create Password", "password");        
+            string Email = Microsoft.VisualBasic.Interaction.InputBox("Enter Email", "Email", "Email");
+            string bio = Microsoft.VisualBasic.Interaction.InputBox("Enter your biography here", "Create Bio", "Bio");
+            var projectDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            projectDirectory = Path.GetFullPath(Path.Combine(projectDirectory, @"..\..\.."));
+            var filePath = Path.Combine(projectDirectory, "profiles.csv");
+
+            File.AppendAllText(filePath, "\n" + username + ", " + bio);
+
+            filePath = Path.Combine(projectDirectory, "passwords.csv");
+
+            File.AppendAllText( filePath, "\n" + username + "," + password);
 
         }
 
