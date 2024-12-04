@@ -1,4 +1,6 @@
-﻿namespace RoomateFinder
+﻿using System.Xml.Serialization;
+using RoomateFinderEngne;
+namespace RoomateFinder
 {
     partial class HomePage
     {
@@ -6,13 +8,14 @@
         private System.ComponentModel.IContainer components = null;
         private Button profileButton;
         private Button logoutButton;
+        private Button surveyButton;
         private Label matchesLabel;
         private TableLayoutPanel mainLayout;
         private Panel navBar;
         private Panel contentPanel;
         private Label titleLabel;
 
-       
+ 
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -119,6 +122,13 @@
             logoutButton.Click += LogoutButton_Click;
             StyleNavButton(logoutButton);
 
+            // Survey Button
+            surveyButton = new Button();
+            surveyButton.Text = "Survey";
+            surveyButton.Size = new Size(140, 60); // Adjust the size as needed
+            surveyButton.Click += SurveyButton_Click;
+            StyleNavButton(surveyButton);
+
             // Add buttons to navigation bar
             navButtonsPanel = new FlowLayoutPanel();
             navButtonsPanel.Dock = DockStyle.Right;
@@ -128,6 +138,7 @@
             navButtonsPanel.Padding = new Padding(0);
             navButtonsPanel.Margin = new Padding(0);
 
+            navButtonsPanel.Controls.Add(surveyButton);
             navButtonsPanel.Controls.Add(profileButton);
             navButtonsPanel.Controls.Add(logoutButton);
         }
@@ -157,7 +168,14 @@
             LoginForm loginForm = new LoginForm();
             loginForm.Show();
         }
+        private void SurveyButton_Click(object sender, EventArgs e)
+        {
+            SurveyUI surveyForm = new SurveyUI();
+            surveyForm.Show();
+        }
+
  
     }
+
     #endregion
 }

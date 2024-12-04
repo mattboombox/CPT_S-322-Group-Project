@@ -100,7 +100,7 @@
             // 
             button2.Location = new Point(20, 20);
             button2.Name = "button2";
-            button2.Size = new Size(200, 50);
+            button2.Size = new Size(300, 50);
             button2.TabIndex = 6;
             button2.Text = "Create Profile";
             button2.Font = new Font("Segoe UI", 10, FontStyle.Bold);

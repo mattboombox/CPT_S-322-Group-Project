@@ -1,3 +1,4 @@
+
 namespace RoomateFinderTests
 {
     public class Tests
@@ -5,6 +6,7 @@ namespace RoomateFinderTests
         [SetUp]
         public void Setup()
         {
+            
         }
 
         [Test]
