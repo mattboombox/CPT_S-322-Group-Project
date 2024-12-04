@@ -49,6 +49,26 @@
             textBox10 = new TextBox();
             label10 = new Label();
             SubmitButton = new Button();
+            textBox11 = new TextBox();
+            label11 = new Label();
+            textBox12 = new TextBox();
+            label12 = new Label();
+            textBox13 = new TextBox();
+            label13 = new Label();
+            textBox14 = new TextBox();
+            label14 = new Label();
+            textBox15 = new TextBox();
+            label15 = new Label();
+            textBox16 = new TextBox();
+            label16 = new Label();
+            textBox17 = new TextBox();
+            label17 = new Label();
+            textBox18 = new TextBox();
+            label18 = new Label();
+            textBox19 = new TextBox();
+            label19 = new Label();
+            textBox20 = new TextBox();
+            label20 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -221,11 +241,191 @@
             SubmitButton.UseVisualStyleBackColor = true;
             SubmitButton.Click += SubmitButton_Click;
             // 
+            // textBox11
+            // 
+            textBox11.Location = new Point(444, 760);
+            textBox11.Name = "textBox11";
+            textBox11.Size = new Size(200, 27);
+            textBox11.TabIndex = 40;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(444, 740);
+            label11.Name = "label11";
+            label11.Size = new Size(154, 20);
+            label11.TabIndex = 39;
+            label11.Text = "Template Question 10";
+            // 
+            // textBox12
+            // 
+            textBox12.Location = new Point(444, 680);
+            textBox12.Name = "textBox12";
+            textBox12.Size = new Size(200, 27);
+            textBox12.TabIndex = 38;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(444, 660);
+            label12.Name = "label12";
+            label12.Size = new Size(146, 20);
+            label12.TabIndex = 37;
+            label12.Text = "Template Question 9";
+            // 
+            // textBox13
+            // 
+            textBox13.Location = new Point(444, 600);
+            textBox13.Name = "textBox13";
+            textBox13.Size = new Size(200, 27);
+            textBox13.TabIndex = 36;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(444, 580);
+            label13.Name = "label13";
+            label13.Size = new Size(146, 20);
+            label13.TabIndex = 35;
+            label13.Text = "Template Question 8";
+            // 
+            // textBox14
+            // 
+            textBox14.Location = new Point(444, 520);
+            textBox14.Name = "textBox14";
+            textBox14.Size = new Size(200, 27);
+            textBox14.TabIndex = 34;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(444, 500);
+            label14.Name = "label14";
+            label14.Size = new Size(146, 20);
+            label14.TabIndex = 33;
+            label14.Text = "Template Question 7";
+            // 
+            // textBox15
+            // 
+            textBox15.Location = new Point(444, 440);
+            textBox15.Name = "textBox15";
+            textBox15.Size = new Size(200, 27);
+            textBox15.TabIndex = 32;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(444, 420);
+            label15.Name = "label15";
+            label15.Size = new Size(146, 20);
+            label15.TabIndex = 31;
+            label15.Text = "Template Question 6";
+            // 
+            // textBox16
+            // 
+            textBox16.Location = new Point(444, 360);
+            textBox16.Name = "textBox16";
+            textBox16.Size = new Size(200, 27);
+            textBox16.TabIndex = 30;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(444, 340);
+            label16.Name = "label16";
+            label16.Size = new Size(146, 20);
+            label16.TabIndex = 29;
+            label16.Text = "Template Question 5";
+            // 
+            // textBox17
+            // 
+            textBox17.Location = new Point(444, 280);
+            textBox17.Name = "textBox17";
+            textBox17.Size = new Size(200, 27);
+            textBox17.TabIndex = 28;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(444, 260);
+            label17.Name = "label17";
+            label17.Size = new Size(146, 20);
+            label17.TabIndex = 27;
+            label17.Text = "Template Question 4";
+            // 
+            // textBox18
+            // 
+            textBox18.Location = new Point(444, 200);
+            textBox18.Name = "textBox18";
+            textBox18.Size = new Size(200, 27);
+            textBox18.TabIndex = 26;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new Point(444, 180);
+            label18.Name = "label18";
+            label18.Size = new Size(146, 20);
+            label18.TabIndex = 25;
+            label18.Text = "Template Question 3";
+            // 
+            // textBox19
+            // 
+            textBox19.Location = new Point(444, 120);
+            textBox19.Name = "textBox19";
+            textBox19.Size = new Size(200, 27);
+            textBox19.TabIndex = 24;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Location = new Point(444, 100);
+            label19.Name = "label19";
+            label19.Size = new Size(146, 20);
+            label19.TabIndex = 23;
+            label19.Text = "Template Question 2";
+            // 
+            // textBox20
+            // 
+            textBox20.Location = new Point(444, 40);
+            textBox20.Name = "textBox20";
+            textBox20.Size = new Size(200, 27);
+            textBox20.TabIndex = 22;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Location = new Point(444, 20);
+            label20.Name = "label20";
+            label20.Size = new Size(146, 20);
+            label20.TabIndex = 21;
+            label20.Text = "Template Question 1";
+            // 
             // SurveyUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(782, 903);
+            Controls.Add(textBox11);
+            Controls.Add(label11);
+            Controls.Add(textBox12);
+            Controls.Add(label12);
+            Controls.Add(textBox13);
+            Controls.Add(label13);
+            Controls.Add(textBox14);
+            Controls.Add(label14);
+            Controls.Add(textBox15);
+            Controls.Add(label15);
+            Controls.Add(textBox16);
+            Controls.Add(label16);
+            Controls.Add(textBox17);
+            Controls.Add(label17);
+            Controls.Add(textBox18);
+            Controls.Add(label18);
+            Controls.Add(textBox19);
+            Controls.Add(label19);
+            Controls.Add(textBox20);
+            Controls.Add(label20);
             Controls.Add(SubmitButton);
             Controls.Add(textBox10);
             Controls.Add(label10);
@@ -275,6 +475,27 @@
         private Label label9;
         private TextBox textBox10;
         private Label label10;
+
+        private TextBox textBox11;
+        private Label label11;
+        private TextBox textBox12;
+        private Label label12;
+        private TextBox textBox13;
+        private Label label13;
+        private TextBox textBox14;
+        private Label label14;
+        private TextBox textBox15;
+        private Label label15;
+        private TextBox textBox16;
+        private Label label16;
+        private TextBox textBox17;
+        private Label label17;
+        private TextBox textBox18;
+        private Label label18;
+        private TextBox textBox19;
+        private Label label19;
+        private TextBox textBox20;
+        private Label label20;
         private Button SubmitButton;
     }
 }

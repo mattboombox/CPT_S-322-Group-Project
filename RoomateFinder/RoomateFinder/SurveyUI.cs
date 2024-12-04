@@ -20,7 +20,7 @@ namespace RoomateFinder
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            // placeholder logic for gathering results of questions
+            //placeholder logic for gathering results of questions
 
             MessageBox.Show("Survey Submitted Succesfully!");
         }
