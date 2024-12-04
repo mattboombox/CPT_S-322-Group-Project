@@ -14,16 +14,20 @@ namespace RoommateFinderEngine
         public int[] scores;
         public int[] matchIndicies;
 
-        public Grader()
+        public string userAnswers;
+
+        public Grader(string UserSurveyResults)
         {
             // Array for storing scores from roommates.csv
             scores = new int[100];
             // Array for storing the indices of the top three scores
             matchIndicies = new int[3];
+
+            userAnswers = UserSurveyResults;
         }
 
         // Compares the answer string from the user and a roommate answer string, giving it a plus one score for each matching answer
-        public int gradeAnswer(string userAnswers, string roommateAnswers)
+        public int gradeAnswer(string roommateAnswers)
         {
             int minLength = Math.Min(userAnswers.Length, roommateAnswers.Length);
             int score = 0;
@@ -44,7 +48,7 @@ namespace RoommateFinderEngine
         {
             for (int i = 0; i < roommateAnswers.Count; i++)
             {
-                this.scores[i] = gradeAnswer(userAnswers, roommateAnswers[i]);
+                this.scores[i] = gradeAnswer(roommateAnswers[i]);
             }
         }
 
@@ -99,7 +103,7 @@ namespace RoommateFinderEngine
             return answers;
         }
 
-        public void CalculateMatches(string userAnswers, string filePath)
+        public void CalculateMatches(string filePath)
         {
             // Load roommate answers from the CSV file
             List<string> roommateAnswers = LoadAnswersFromFile(filePath);
@@ -107,7 +111,7 @@ namespace RoommateFinderEngine
             // Fill the scores array using the loaded answers
             for (int i = 0; i < roommateAnswers.Count; i++)
             {
-                this.scores[i] = gradeAnswer(userAnswers, roommateAnswers[i]);
+                this.scores[i] = gradeAnswer(roommateAnswers[i]);
             }
 
             // Determine the top matches and populate the matchIndicies array
