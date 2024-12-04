@@ -40,7 +40,7 @@ namespace RoomateFinder
                 this.controller.SetActiveUser(this.controller.newLogin.Username);
                 this.Hide(); // Hides the login form
                 MatchManager matchManager = new MatchManager(this.controller);
-                matchManager.findMatches();
+                matchManager.FindMatches();
                 HomePage homepage = new HomePage(this.controller); // shows the homepage form.
                 homepage.ShowDialog();
                 this.Close();
@@ -84,6 +84,8 @@ namespace RoomateFinder
         /// <param name="e">e.</param>
         private void button2_Click(object sender, EventArgs e)
         {
+            this.controller.newLogin.CreateNewUser();
+            
 
         }
     }

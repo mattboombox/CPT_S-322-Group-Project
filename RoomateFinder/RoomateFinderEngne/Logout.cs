@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace RoomateFinderEngne
 {
@@ -11,10 +12,12 @@ namespace RoomateFinderEngne
     public class LogoutManager
     {
         private readonly string filePath;
+        private List<Match> matches;
 
         public LogoutManager(string filePath = "profiles.csv")
         {
             this.filePath = filePath;
+            this.matches = new List<Match>();
         }
 
         public void LogoutUser(UserProfile user)
@@ -72,5 +75,7 @@ namespace RoomateFinderEngne
                 Console.WriteLine($"Error saving or updating user info: {ex.Message}");
             }
         }
+
+
     }
 }

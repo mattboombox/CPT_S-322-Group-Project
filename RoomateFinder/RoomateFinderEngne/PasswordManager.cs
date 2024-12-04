@@ -45,11 +45,19 @@ namespace RoomateFinderEngne
         /// </summary>
         private void LoadPasswordDictionary()
         {
-            while (!reader.EndOfStream) 
+            while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
                 var values = line.Split(',');
-                passwordDictionary[values[0]] = values[1];
+
+                if (!passwordDictionary.ContainsKey(values[0]))
+                {
+                    passwordDictionary[values[0]] = values[1];
+                }
+                else
+                {
+                    Console.WriteLine($"Duplicate key found: {values[0]}. Skipping.");
+                }
             }
         }
 

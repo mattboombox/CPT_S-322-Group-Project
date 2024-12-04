@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using System.IO;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace RoomateFinderEngne
 {
@@ -23,39 +24,64 @@ namespace RoomateFinderEngne
         /// <summary>
         /// Reads match data from the CSV file and adds matches to the controller.
         /// </summary>
-public void findMatches()
-{
-    if (!File.Exists("matches.csv"))
-    {
-        return;
-    }
-
-   // StreamReader reader = new StreamReader(@"C:\Users\katiebrickner\Desktop\CPT_S-322-Group-Project\RoomateFinder\RoomateFinderEngne\matches.csv");
-    string filePath = "matches.csv";
-
- using (StreamReader reader = new StreamReader(filePath))
+        public void FindMatches()
         {
-            int lineNumber = 0;
+            string filePath = "matches.csv";
 
-            while (!reader.EndOfStream)
+            if (!File.Exists(filePath))
             {
-                var line = reader.ReadLine();
-                lineNumber++;
-                var values = line.Split(',');
-
-                if (values.Length >= 2)
-                {
-                    string firstName = values[0].Trim();
-                    string lastName = values[1].Trim();
-
-                    // Create a new Match object
-                    Match match = new Match(firstName, lastName);
-
-                    // Add the match to the controller
-                    controller.AddMatch(match);
-                }   
+                return;
             }
-         }
+
+            Console.WriteLine("Reading matches from " + filePath);
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                int lineNumber = 0;
+
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    lineNumber++;
+                    Console.WriteLine($"Line {lineNumber}: {line}");
+
+                    var values = line.Split(',');
+
+                    if (values.Length >= 3)
+                    {
+                        string username = values[0].Trim();
+                        string firstName = values[1].Trim();
+                        string lastName = values[2].Trim();
+
+                        // Validate the values
+                        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
+                        {
+                            continue;
+                        }
+
+                        // Create a new Match object with a unique username
+                        Match match = new Match(username, firstName, lastName);
+
+                        // Add the match to the controller
+                        controller.AddMatch(match);
+                    }
+                    else
+                    {   
+                        Console.WriteLine($"Invalid data at line {lineNumber}: {line} (Expected 3 values, found {values.Length})");
+                    }
+                }
+            }
+        }
+
+        public void SaveMatches()
+        {
+            using (StreamWriter writer = new StreamWriter("matches.csv"))
+            {
+                foreach (var match in controller.matches)
+                {
+                    writer.WriteLine(match);
+                }
+            }
         }
     }
 }
