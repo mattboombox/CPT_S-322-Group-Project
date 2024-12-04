@@ -29,30 +29,31 @@ namespace RoomateFinder
 
         private void SubmitButton_Click(object sender, EventArgs e)
         {
-            // Gathering results from text boxes
-            string response1 = textBox1.Text;
-            string response2 = textBox2.Text;
-            string response3 = textBox3.Text;
-            string response4 = textBox4.Text;
-            string response5 = textBox5.Text;
-            string response6 = textBox6.Text;
-            string response7 = textBox7.Text;
-            string response8 = textBox8.Text;
-            string response9 = textBox9.Text;
-            string response10 = textBox10.Text;
-            string response11 = textBox11.Text;
-            string response12 = textBox12.Text;
-            string response13 = textBox13.Text;
-            string response14 = textBox14.Text;
-            string response15 = textBox15.Text;
-            string response16 = textBox16.Text;
-            string response17 = textBox17.Text;
-            string response18 = textBox18.Text;
-            string response19 = textBox19.Text;
-            string response20 = textBox20.Text;
+            // Gathering results from text boxes 
+            string[] responses = new string[20];
+            responses[0] = textBox1.Text;
+            responses[1] = textBox2.Text;
+            responses[2] = textBox3.Text;
+            responses[3] = textBox4.Text;
+            responses[4] = textBox5.Text;
+            responses[5] = textBox6.Text;
+            responses[6] = textBox7.Text;
+            responses[7] = textBox8.Text;
+            responses[8] = textBox9.Text;
+            responses[9] = textBox10.Text;
+            responses[10] = textBox11.Text;
+            responses[11] = textBox12.Text;
+            responses[12] = textBox13.Text;
+            responses[13] = textBox14.Text;
+            responses[14] = textBox15.Text;
+            responses[15] = textBox16.Text;
+            responses[16] = textBox17.Text;
+            responses[17] = textBox18.Text;
+            responses[18] = textBox19.Text;
+            responses[19] = textBox20.Text;
 
 
-
+            SaveResponsesToCSV(responses);
 
 
             // Placeholder logic for processing the responses
