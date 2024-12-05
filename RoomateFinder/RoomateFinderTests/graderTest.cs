@@ -10,8 +10,9 @@ namespace graderTest
             try
             {
                 //Arrange
+                string filePath = "roommates.csv";
                 string mockAnswers = "cbadddcabbccaddbadca";
-                Grader grader1 = new Grader(mockAnswers, "roommates.csv");
+                Grader grader1 = new Grader(mockAnswers, filePath);
                 //Act
                 grader1.CalculateMatches();
                 int result1 = grader1.matchIndicies[0];

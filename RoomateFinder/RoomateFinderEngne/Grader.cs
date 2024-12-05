@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
+using System.Text;
 
 namespace RoommateFinderEngine
 {
@@ -13,7 +14,6 @@ namespace RoommateFinderEngine
     {
         public int[] scores;
         public int[] matchIndicies;
-
         public string userAnswers;
         public string filePath;
 
@@ -79,22 +79,37 @@ namespace RoommateFinderEngine
 
             try
             {
-                // Read all lines from the CSV file
-                var lines = File.ReadAllLines(filePath);
-
-                foreach (var line in lines)
+                // Ensure the file exists
+                if (!File.Exists(filePath))
                 {
-                    // Split each line by commas
-                    var parts = line.Split(',');
+                    Console.WriteLine($"File not found at path: {filePath}");
+                    return answers;
+                }
 
-                    // Ensure the line has exactly three parts
-                    if (parts.Length == 3)
+                // Open the file with FileStream and StreamReader
+                using (StreamReader reader = new StreamReader(File.OpenRead(this.filePath)))
+                {
+                    string line;
+
+                    // Read lines until the end of the file
+                    while ((line = reader.ReadLine()) != null)
                     {
-                        // Extract the answers string (third part of each line)
-                        string answerString = parts[2].Trim();
+                        // Split each line by commas
+                        var parts = line.Split(',');
 
-                        // Add to the list
-                        answers.Add(answerString);
+                        // Ensure the line has exactly three parts
+                        if (parts.Length == 3)
+                        {
+                            // Extract the answers string (third part of each line)
+                            string answerString = parts[2].Trim();
+
+                            // Add to the list
+                            answers.Add(answerString);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Invalid line format: {line}");
+                        }
                     }
                 }
             }
@@ -106,6 +121,7 @@ namespace RoommateFinderEngine
             return answers;
         }
 
+        //Runs all related class functions
         public void CalculateMatches()
         {
             // Load roommate answers from the CSV file
