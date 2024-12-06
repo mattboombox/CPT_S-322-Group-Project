@@ -74,6 +74,7 @@
             button1.ForeColor = Color.White;
             button1.FlatStyle = FlatStyle.Flat;
             button1.Width = 300;
+            button1.Height = 40;
             button1.Margin = new Padding(0, 20, 0, 0);
             button1.Click += button1_Click;
 

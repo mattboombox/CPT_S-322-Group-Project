@@ -117,6 +117,7 @@
         SubmitButton.Click += SubmitButton_Click;
         scrollablePanel.Controls.Add(SubmitButton);
         this.Controls.Add(scrollablePanel);
+        this.Size = new Size(1000, 800);
 
         ResumeLayout(false);
         PerformLayout();
