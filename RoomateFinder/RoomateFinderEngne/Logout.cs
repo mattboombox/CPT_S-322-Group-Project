@@ -75,7 +75,5 @@ namespace RoomateFinderEngne
                 Console.WriteLine($"Error saving or updating user info: {ex.Message}");
             }
         }
-
-
     }
 }

@@ -60,39 +60,39 @@ namespace RoomateFinderEngne
 
         // Method to add a message
     // In RoomateFinderController
-public void AddMessage(string senderUsername, string receiverUsername, string content)
-{
-    string key = GetConversationKey(senderUsername, receiverUsername);
+        public void AddMessage(string senderUsername, string receiverUsername, string content)
+        {   
+            string key = GetConversationKey(senderUsername, receiverUsername);
 
-    if (!messages.ContainsKey(key))
-    {
-        messages[key] = new List<Message>();
-    }
+            if (!messages.ContainsKey(key))
+            {
+                messages[key] = new List<Message>();
+             }
 
-    messages[key].Add(new Message
-    {
-        Sender = senderUsername,
-        Receiver = receiverUsername,
-        Content = content,
-        Timestamp = DateTime.Now
-    });
+            messages[key].Add(new Message
+            {
+                 Sender = senderUsername,
+                 Receiver = receiverUsername,
+                Content = content,
+                Timestamp = DateTime.Now
+         });
 
-}
+        }
         // Method to retrieve messages between two users
-       public List<Message> GetMessages(string user1, string user2)
-{
-    string key = GetConversationKey(user1, user2);
+        public List<Message> GetMessages(string user1, string user2)
+        {
+            string key = GetConversationKey(user1, user2);
 
-    if (messages.ContainsKey(key))
-    {
-        // Debug: Log retrieval
-        return messages[key];
-    }
-    else
-    {
-        return new List<Message>();
-    }
-}
+            if (messages.ContainsKey(key))
+            {
+                // Debug: Log retrieval
+                return messages[key];
+            }
+            else
+            {
+                return new List<Message>();
+            }
+        }
 
         // Helper method to create a unique key for each conversation
         private string GetConversationKey(string user1, string user2)
@@ -105,18 +105,18 @@ public void AddMessage(string senderUsername, string receiverUsername, string co
         /// finds the active user's profile and sets it as the currently active user.
         /// </summary>
         /// <param name="username"></param>
-       public void SetActiveUser(string username)
-{
-    activeUser = profileManager.LoadProfile(username);
-    if (activeUser == null)
-    {
-        throw new Exception("User profile not found.");
-    }
-    if (string.IsNullOrEmpty(activeUser.Username))
-    {
-        activeUser.Username = username; 
-    }
-}
+        public void SetActiveUser(string username)
+        {
+            activeUser = profileManager.LoadProfile(username);
+            if (activeUser == null)
+            {
+                throw new Exception("User profile not found.");
+            }
+            if (string.IsNullOrEmpty(activeUser.Username))
+            {
+                activeUser.Username = username; 
+            }
+        }   
 
         public void clearMatches()
         {

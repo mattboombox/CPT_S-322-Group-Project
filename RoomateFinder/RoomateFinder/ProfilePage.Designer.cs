@@ -13,10 +13,9 @@ namespace RoomateFinder
         private ToolStripMenuItem bioToolStripMenuItem;
         private ToolStripMenuItem uploadPhotoToolStripMenuItem;
         private Panel profilePanel;
-
+        
         private void InitializeComponent()
         {
-            // Initialize components
             name = new Label();
             nameEditor = new TextBox();
             bio = new Label();
@@ -29,146 +28,97 @@ namespace RoomateFinder
             uploadPhotoToolStripMenuItem = new ToolStripMenuItem();
             profilePanel = new Panel();
 
-            // Suspend layout for performance
             SuspendLayout();
 
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
+            // MenuStrip
             menuStrip1.Items.AddRange(new ToolStripItem[] { editToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1500, 30);
+            menuStrip1.Size = new Size(1280, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.BackColor = Color.SteelBlue;
             menuStrip1.ForeColor = Color.White;
             menuStrip1.Font = new Font("Segoe UI", 12, FontStyle.Bold);
 
-            // 
-            // editToolStripMenuItem
-            // 
-            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] {
-            usernameToolStripMenuItem,
-            bioToolStripMenuItem,
-            uploadPhotoToolStripMenuItem });
-            editToolStripMenuItem.Name = "editToolStripMenuItem";
-            editToolStripMenuItem.Size = new Size(55, 26);
+            // Edit Menu
+            editToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                usernameToolStripMenuItem,
+                bioToolStripMenuItem,
+                uploadPhotoToolStripMenuItem
+            });
             editToolStripMenuItem.Text = "Edit";
-            editToolStripMenuItem.ForeColor = Color.White;
 
-            // 
-            // usernameToolStripMenuItem
-            // 
-            usernameToolStripMenuItem.Name = "usernameToolStripMenuItem";
-            usernameToolStripMenuItem.Size = new Size(190, 28);
+            // Edit Username
             usernameToolStripMenuItem.Text = "Edit Username";
             usernameToolStripMenuItem.Click += usernameToolStripMenuItem_Click;
 
-            // 
-            // bioToolStripMenuItem
-            // 
-            bioToolStripMenuItem.Name = "bioToolStripMenuItem";
-            bioToolStripMenuItem.Size = new Size(190, 28);
+            // Edit Biography
             bioToolStripMenuItem.Text = "Edit Biography";
             bioToolStripMenuItem.Click += bioToolStripMenuItem_Click;
 
-            // 
-            // uploadPhotoToolStripMenuItem
-            // 
-            uploadPhotoToolStripMenuItem.Name = "uploadPhotoToolStripMenuItem";
-            uploadPhotoToolStripMenuItem.Size = new Size(190, 28);
+            // Upload Photo
             uploadPhotoToolStripMenuItem.Text = "Upload Photo";
             uploadPhotoToolStripMenuItem.Click += UploadPhotoButton_Click;
 
-            // 
-            // profilePanel
-            // 
-            profilePanel.Location = new Point(50, 50);
-            profilePanel.Size = new Size(1400, 900);
-            profilePanel.BorderStyle = BorderStyle.FixedSingle;
-            profilePanel.BackColor = Color.WhiteSmoke;
+            // Profile Panel
+            profilePanel.Dock = DockStyle.Fill;
             profilePanel.Padding = new Padding(20);
 
-            // 
-            // profilePictureBox
-            // 
-            profilePictureBox.Name = "profilePictureBox";
-            profilePictureBox.Size = new Size(300, 300);
-            profilePictureBox.Location = new Point(50, 20);
+            // TableLayoutPanel for structured layout
+            var tableLayout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 2,
+                RowCount = 2,
+                Padding = new Padding(10),
+                AutoSize = true
+            };
+            tableLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F)); 
+            tableLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F)); 
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 250F)); 
+            tableLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F)); 
+
+            // Profile PictureBox
+            profilePictureBox.Size = new Size(200, 200);
+            profilePictureBox.Dock = DockStyle.Fill;
             profilePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             profilePictureBox.BorderStyle = BorderStyle.Fixed3D;
             profilePictureBox.BackColor = Color.LightGray;
-            profilePanel.Controls.Add(profilePictureBox);
+            tableLayout.Controls.Add(profilePictureBox, 0, 0);
 
-            // 
-            // name
-            // 
-            name.Location = new Point(400, 20);
-            name.Name = "name";
-            name.Font = new Font("Segoe UI", 28, FontStyle.Bold);
-            name.Size = new Size(950, 100);
+            // Username Label
+            name.Text = "John Doe"; 
+            name.Font = new Font("Segoe UI", 24, FontStyle.Bold);
             name.ForeColor = Color.DarkSlateGray;
-            name.TabIndex = 1;
+            name.Dock = DockStyle.Fill;
             name.TextAlign = ContentAlignment.MiddleLeft;
-            profilePanel.Controls.Add(name);
+            tableLayout.Controls.Add(name, 1, 0);
 
-            // 
-            // nameEditor
-            // 
-            nameEditor.Location = new Point(400, 20);
-            nameEditor.Name = "nameEditor";
-            nameEditor.Size = new Size(950, 50);
-            nameEditor.Font = new Font("Segoe UI", 28, FontStyle.Bold);
-            nameEditor.Visible = false;
-            profilePanel.Controls.Add(nameEditor);
-
-            // 
-            // bio
-            // 
-            bio.Location = new Point(50, 350);
-            bio.Name = "bio";
-            bio.Size = new Size(1300, 500);
-            bio.BorderStyle = BorderStyle.None;
+            // Biography Label
+            bio.Text = "This is a sample biography."; 
             bio.Font = new Font("Segoe UI", 14);
-            bio.AutoSize = false;
-            bio.TextAlign = ContentAlignment.TopLeft;
-            bio.BackColor = Color.WhiteSmoke;
             bio.ForeColor = Color.Black;
+            bio.BackColor = Color.WhiteSmoke;
             bio.Padding = new Padding(10);
-            bio.TabIndex = 2;
-            profilePanel.Controls.Add(bio);
+            bio.Dock = DockStyle.Fill;
+            bio.TextAlign = ContentAlignment.TopLeft;
+            tableLayout.SetColumnSpan(bio, 2); 
+            tableLayout.Controls.Add(bio, 0, 1);
 
-            // 
-            // bioEditor
-            // 
-            bioEditor.Location = new Point(50, 350);
-            bioEditor.Name = "bioEditor";
-            bioEditor.Size = new Size(1300, 500);
-            bioEditor.Multiline = true;
-            bioEditor.Font = new Font("Segoe UI", 14);
-            bioEditor.Visible = false;
-            bioEditor.ScrollBars = ScrollBars.Vertical;
-            profilePanel.Controls.Add(bioEditor);
+            // Add TableLayoutPanel to Profile Panel
+            profilePanel.Controls.Add(tableLayout);
 
-            // 
-            // ProfilePage
-            // 
-            ClientSize = new Size(1500, 1000);
+            // Profile Page
+            ClientSize = new Size(1280, 720);
             Controls.Add(profilePanel);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "ProfilePage";
             Text = "Profile Page";
             BackColor = Color.Gainsboro;
             StartPosition = FormStartPosition.CenterScreen;
 
-            // Add subtle shadow effect
-            profilePanel.BorderStyle = BorderStyle.FixedSingle;
-            profilePanel.BackColor = Color.White;
-
-            // Resume layout
             ResumeLayout(false);
             PerformLayout();
         }

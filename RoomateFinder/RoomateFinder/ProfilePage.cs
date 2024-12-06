@@ -52,48 +52,48 @@ namespace RoomateFinder
         }
 
         private void NameTextBox_KeyDown(object sender, KeyEventArgs e)
-{
-    if (e.KeyCode == Keys.Enter)
-    {
-        name.Text = nameEditor.Text; // Update the label with the edited text
-        name.Visible = true; // Show the label again
-        nameEditor.Visible = false; // Hide the TextBox
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                name.Text = nameEditor.Text; // Update the label with the edited text
+                name.Visible = true; // Show the label again
+                nameEditor.Visible = false; // Hide the TextBox
 
-        var user = controller.GetActiveUser();
-        user.Username = nameEditor.Text; // Update the username in the user profile
+                var user = controller.GetActiveUser();
+                user.Username = nameEditor.Text; // Update the username in the user profile
 
-        // Update the profile
-        ProfileManager profileManager = new ProfileManager();
-        profileManager.UpdateUserProfile(user.Username, user.Bio);
+                // Update the profile
+                ProfileManager profileManager = new ProfileManager();
+                profileManager.UpdateUserProfile(user.Username, user.Bio);
 
-        e.Handled = true;
-        e.SuppressKeyPress = true;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
 
-        nameEditor.KeyDown -= NameTextBox_KeyDown;
-    }
-}
+                nameEditor.KeyDown -= NameTextBox_KeyDown;
+            }
+        }
 
         private void BioTextBox_KeyDown(object sender, KeyEventArgs e)
-{
-    if (e.KeyCode == Keys.Enter)
-    {
-        bio.Text = bioEditor.Text; // Update the label with the edited text
-        bio.Visible = true; // Show the label again
-        bioEditor.Visible = false; // Hide the TextBox
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                bio.Text = bioEditor.Text; // Update the label with the edited text
+                bio.Visible = true; // Show the label again
+                bioEditor.Visible = false; // Hide the TextBox
 
-        var user = controller.GetActiveUser();
-        user.Bio = bioEditor.Text; // Update the bio in the user profile
+                var user = controller.GetActiveUser();
+                user.Bio = bioEditor.Text; // Update the bio in the user profile
 
-        // Update the profile
-        ProfileManager profileManager = new ProfileManager();
-        profileManager.UpdateUserProfile(user.Username, user.Bio);
+                // Update the profile
+                ProfileManager profileManager = new ProfileManager();
+                profileManager.UpdateUserProfile(user.Username, user.Bio);
 
-        e.Handled = true;
-        e.SuppressKeyPress = true;
+                e.Handled = true;
+                e.SuppressKeyPress = true;
 
-        bioEditor.KeyDown -= BioTextBox_KeyDown;
-    }
-}
+                bioEditor.KeyDown -= BioTextBox_KeyDown;
+            }
+        }
 
         private async void UploadPhotoButton_Click(object sender, EventArgs e)
         {

@@ -30,77 +30,79 @@ namespace RoomateFinder
 
         private void InitializeComponent()
         {
-            // Initialize components
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new SizeF(96F, 96F);
+
             components = new System.ComponentModel.Container();
 
-            // Set Form properties
             this.Text = "RoomMate Finder - Home";
-            this.Size = new Size(1024, 768); // Increased form size
-            this.MinimumSize = new Size(2000, 1000);
+            this.Size = new Size(1280, 768);
+            this.MinimumSize = new Size(800, 600); 
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.White;
 
-            // Main Layout Panel
-            mainLayout = new TableLayoutPanel();
-            mainLayout.Dock = DockStyle.Fill;
-            mainLayout.RowCount = 2;
-            mainLayout.ColumnCount = 1;
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F)); // Increased navigation bar height
-            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F)); 
+            mainLayout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                RowCount = 2,
+                ColumnCount = 1
+            };
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F)); // Navigation bar height
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F)); // Remaining space for content
             this.Controls.Add(mainLayout);
 
-            // Navigation Bar Panel
-            navBar = new Panel();
-            navBar.Dock = DockStyle.Fill;
-            navBar.BackColor = Color.FromArgb(30, 144, 255); 
-            navBar.Padding = new Padding(20, 10, 20, 10); 
+            navBar = new Panel
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.FromArgb(30, 144, 255),
+                Padding = new Padding(20, 10, 20, 10) // Adjust padding
+            };
 
-            // Title Label
-            titleLabel = new Label();
-            titleLabel.Text = "RoomMate Finder";
-            titleLabel.Font = new Font("Segoe UI", 28, FontStyle.Bold); 
-            titleLabel.ForeColor = Color.White;
-            titleLabel.AutoSize = true;
-            titleLabel.Dock = DockStyle.Left;
+            titleLabel = new Label
+            {
+                Text = "RoomMate Finder",
+                Font = new Font("Segoe UI", 28, FontStyle.Bold),
+                ForeColor = Color.White,
+                AutoSize = true,
+                Dock = DockStyle.Left
+            };
 
-            // Navigation Buttons
             InitializeNavButtons();
 
-            // Add controls to navBar
             navBar.Controls.Add(navButtonsPanel);
             navBar.Controls.Add(titleLabel);
 
-            // Content Panel
-            contentPanel = new Panel();
-            contentPanel.Dock = DockStyle.Fill;
-            contentPanel.Padding = new Padding(40); // Increased padding
-            contentPanel.BackColor = Color.White;
+            contentPanel = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(40), 
+                BackColor = Color.White
+            };
 
-            // Matches Label
-            matchesLabel = new Label();
-            matchesLabel.Text = "Available Matches";
-            matchesLabel.Font = new Font("Segoe UI", 24, FontStyle.Bold); // Increased font size
-            matchesLabel.ForeColor = Color.Black;
-            matchesLabel.AutoSize = true;
-            matchesLabel.Dock = DockStyle.Top;
-            matchesLabel.Margin = new Padding(0, 0, 0, 20); // Added margin below label
+            matchesLabel = new Label
+            {
+                Text = "Available Matches",
+                Font = new Font("Segoe UI", 24, FontStyle.Bold),
+                ForeColor = Color.Black,
+                AutoSize = true,
+                Dock = DockStyle.Top,
+                Margin = new Padding(0, 0, 0, 20) // Space below the label
+            };
 
-            // Matches ListBox
-            matchesListBox = new ListBox();
-            matchesListBox.Font = new Font("Segoe UI", 16); // Increased font size
-            matchesListBox.Dock = DockStyle.Fill;
-            matchesListBox.Margin = new Padding(0, 0, 0, 0);
+            matchesListBox = new ListBox
+            {
+                Font = new Font("Segoe UI", 16),
+                Dock = DockStyle.Fill,
+                Margin = new Padding(0, 0, 0, 0)
+            };
             matchesListBox.DoubleClick += MatchesListBox_Click;
 
-            // Add controls to contentPanel
             contentPanel.Controls.Add(matchesListBox);
             contentPanel.Controls.Add(matchesLabel);
 
-            // Add panels to mainLayout
             mainLayout.Controls.Add(navBar, 0, 0);
             mainLayout.Controls.Add(contentPanel, 0, 1);
 
-            // Adjust control order to ensure titleLabel is in front
             navBar.Controls.SetChildIndex(titleLabel, 1);
         }
 

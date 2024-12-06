@@ -17,14 +17,14 @@ namespace RoomateFinder
         private System.Windows.Forms.Timer refreshTimer;
 
         public ChatForm(RoomateFinderController controller, Match match)
-{
-    this.controller = controller;
-    this.activeUser = controller.GetActiveUser();
-    this.match = match ?? throw new ArgumentNullException(nameof(match));
+        {
+            this.controller = controller;
+            this.activeUser = controller.GetActiveUser();
+            this.match = match ?? throw new ArgumentNullException(nameof(match));
 
-    InitializeComponent();
-    LoadMessages();
-}
+            InitializeComponent();
+            LoadMessages();
+        }
 
         private void InitializeComponent()
         {

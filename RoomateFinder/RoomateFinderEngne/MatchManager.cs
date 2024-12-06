@@ -30,12 +30,13 @@ namespace RoomateFinderEngne
 
             if (!File.Exists(filePath))
             {
+                Console.WriteLine($"File not found at: {Path.GetFullPath(filePath)}");
                 return;
             }
 
-            Console.WriteLine("Reading matches from " + filePath);
+            Console.WriteLine($"Reading matches from {filePath}");
 
-            using (StreamReader reader = new StreamReader(filePath))
+            using (var reader = new StreamReader(filePath))
             {
                 int lineNumber = 0;
 
@@ -43,7 +44,12 @@ namespace RoomateFinderEngne
                 {
                     var line = reader.ReadLine();
                     lineNumber++;
-                    Console.WriteLine($"Line {lineNumber}: {line}");
+
+                    if (string.IsNullOrWhiteSpace(line))
+                    {
+                        Console.WriteLine($"Skipping empty line {lineNumber}");
+                        continue;
+                    }
 
                     var values = line.Split(',');
 
@@ -53,25 +59,25 @@ namespace RoomateFinderEngne
                         string firstName = values[1].Trim();
                         string lastName = values[2].Trim();
 
-                        // Validate the values
                         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName))
                         {
+                            Console.WriteLine($"Invalid data at line {lineNumber}: {line}");
                             continue;
                         }
 
-                        // Create a new Match object with a unique username
-                        Match match = new Match(username, firstName, lastName);
+                        var match = new Match(username, firstName, lastName);
 
-                        // Add the match to the controller
+                        Console.WriteLine($"Parsed match: {match}");
                         controller.AddMatch(match);
                     }
                     else
-                    {   
-                        Console.WriteLine($"Invalid data at line {lineNumber}: {line} (Expected 3 values, found {values.Length})");
+                    {
+                        Console.WriteLine($"Invalid format at line {lineNumber}: {line}");
                     }
                 }
             }
         }
+
 
         public void SaveMatches()
         {

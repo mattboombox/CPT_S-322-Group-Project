@@ -5,90 +5,60 @@ namespace RoomateFinder
 
     public partial class LoginForm : Form
     {
-        /// <summary>
-        /// the main controller for the program.
-        /// </summary>
         private RoomateFinderController controller;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LoginForm"/> class.
-        /// Form that displays the Login screen.
-        /// </summary>
         public LoginForm()
         {
             this.InitializeComponent();
-
             this.controller = new RoomateFinderController();
             this.label3.Text = string.Empty;
+
+            // Properly wire the TextChanged events
+            usernameTextBox.TextChanged += usernameTextBox_TextChanged;
+            passwordTextBox.TextChanged += passwordTextBox_TextChanged;
         }
 
-        /// currently unused but don't delete.
-        private void LoginForm_Load(object sender, EventArgs e)
-        { }
-
-        /// <summary>
-        /// login button event handler.
-        /// </summary>
-        /// <param name="sender">sender.</param>
-        /// <param name="e">e.</param>
         private void button1_Click(object sender, EventArgs e)
         {
+            string username = usernameTextBox.Text.Trim();
+            string password = passwordTextBox.Text.Trim();
+
             if (this.controller.newLogin.ValidateUserInfo())
             {
-                this.label3.Text = "Logging in...";
+                this.controller.SetActiveUser(username);
+                Console.WriteLine($"Active user set: {username}");
 
-                this.controller.SetActiveUser(this.controller.newLogin.Username);
-                this.Hide(); // Hides the login form
+                // Load matches for the active user
                 MatchManager matchManager = new MatchManager(this.controller);
                 matchManager.FindMatches();
-                HomePage homepage = new HomePage(this.controller); // shows the homepage form.
-                homepage.ShowDialog();
+
+                this.Hide();
+                var homePage = new HomePage(this.controller);
+                homePage.ShowDialog();
                 this.Close();
             }
             else
             {
                 this.label3.Text = "Incorrect Username/Password";
-                this.label3.Location = new Point(345, 490);
-                this.label3.Size = new Size(500, 30);
+                this.label3.ForeColor = Color.Red;
+                this.label3.Visible = true;
             }
         }
 
-        /// <summary>
-        /// sets the username in the controller to what was entered into the form.
-        /// </summary>
-        /// <param name="sender">sender.</param>
-        /// <param name="e">e.</param>
         private void usernameTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (this.controller.newLogin.Username != this.usernameTextBox.Text)
-            {
-                this.controller.newLogin.Username = this.usernameTextBox.Text;
-            }
+            this.controller.newLogin.Username = usernameTextBox.Text;
         }
 
-        /// <summary>
-        /// sets the password in the controller to what was entered into the form.
-        /// </summary>
-        /// <param name="sender">sender.</param>
-        /// <param name="e">e.</param>
         private void passwordTextBox_TextChanged(object sender, EventArgs e)
         {
-            if (this.controller.newLogin.Password != this.passwordTextBox.Text)
-            {
-                this.controller.newLogin.Password = this.passwordTextBox.Text;
-            }
+            this.controller.newLogin.Password = passwordTextBox.Text;
         }
 
-        /// <summary>
-        /// Create new profile button handler.
-        /// </summary>
-        /// <param name="sender">sender.</param>
-        /// <param name="e">e.</param>
         private void button2_Click(object sender, EventArgs e)
         {
             this.controller.newLogin.CreateNewUser();
-            
-
+            MessageBox.Show("New user created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

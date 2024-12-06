@@ -67,21 +67,16 @@ namespace RoomateFinderEngne
         /// <param name="username">the username to be validated.</param>
         /// <param name="password">the password to be validated.</param>
         /// <returns></returns>
-        public bool Validate(string username, string password)
-        {
-            bool success = false;
-            string temp;
-
-            if (passwordDictionary.ContainsKey(username))
-            {
-                passwordDictionary.TryGetValue(username, out temp);
-
-                if (temp == password)
-                {
-                    success = true;
-                }
-            }
-            return success;
-        }
+public bool Validate(string username, string password)
+{
+    Console.WriteLine($"Validating Username: {username}, Password: {password}");
+    if (passwordDictionary.TryGetValue(username, out string storedPassword))
+    {
+        Console.WriteLine($"Stored Password: {storedPassword}");
+        return storedPassword == password;
+    }
+    Console.WriteLine("Username not found.");
+    return false;
+}
     }
 }
